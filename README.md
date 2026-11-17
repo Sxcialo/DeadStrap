@@ -1,7 +1,7 @@
 yap yap bad fork of [Bloxstrap](https://github.com/bloxstraplabs/bloxstrap)
 
 > [!IMPORTANT]
-> Yea man this is not under development (most times)
+> Yea man this is not under development (most times).
 
 DeadStrap is a third-party replacement for the standard Roblox bootstrapper, providing additional useful features and improvements.
 
