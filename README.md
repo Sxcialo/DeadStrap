@@ -1,3 +1,5 @@
+I may have been to lazy to change the code and other stuff so it might still say "BloxStrap"
+
 yap yap bad fork of [Bloxstrap](https://github.com/bloxstraplabs/bloxstrap)
 
 > [!IMPORTANT]
