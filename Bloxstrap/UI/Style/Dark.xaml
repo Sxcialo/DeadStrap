@@ -2,4 +2,36 @@
     <SolidColorBrush x:Key="NewTextEditorBackground" Color="#2D2D2D" />
     <SolidColorBrush x:Key="NewTextEditorForeground" Color="White" />
     <SolidColorBrush x:Key="NewTextEditorLink" Color="#3A9CEA" />
+
+    <!-- Black and gray theme overrides -->
+    <Color x:Key="ApplicationBackgroundColor">#FF0B0B0B</Color>
+    <Color x:Key="SolidBackgroundFillColorBase">#FF0B0B0B</Color>
+    <Color x:Key="SolidBackgroundFillColorSecondary">#FF111111</Color>
+    <Color x:Key="SolidBackgroundFillColorTertiary">#FF161616</Color>
+    <Color x:Key="SolidBackgroundFillColorQuarternary">#FF1A1A1A</Color>
+    <Color x:Key="LayerFillColorDefault">#FF141414</Color>
+    <Color x:Key="LayerFillColorAlt">#FF141414</Color>
+    <Color x:Key="CardBackgroundFillColorDefault">#FF151515</Color>
+    <Color x:Key="CardBackgroundFillColorSecondary">#FF1A1A1A</Color>
+    <Color x:Key="ControlFillColorDefault">#FF1C1C1C</Color>
+    <Color x:Key="ControlFillColorSecondary">#FF242424</Color>
+    <Color x:Key="ControlFillColorTertiary">#FF191919</Color>
+    <Color x:Key="ControlFillColorDisabled">#FF141414</Color>
+    <Color x:Key="ControlFillColorInputActive">#FF101010</Color>
+    <Color x:Key="ControlSolidFillColorDefault">#FF1C1C1C</Color>
+    <Color x:Key="SubtleFillColorSecondary">#FF262626</Color>
+    <Color x:Key="SubtleFillColorTertiary">#FF1F1F1F</Color>
+    <Color x:Key="ControlStrokeColorDefault">#FF2E2E2E</Color>
+    <Color x:Key="ControlStrokeColorSecondary">#FF3A3A3A</Color>
+    <Color x:Key="CardStrokeColorDefault">#FF2A2A2A</Color>
+    <Color x:Key="SurfaceStrokeColorDefault">#FF2A2A2A</Color>
+    <Color x:Key="DividerStrokeColorDefault">#FF2A2A2A</Color>
+    <Color x:Key="TextFillColorPrimary">#FFFFFFFF</Color>
+    <Color x:Key="TextFillColorSecondary">#FFB5B5B5</Color>
+    <Color x:Key="TextFillColorTertiary">#FF8A8A8A</Color>
+    <Color x:Key="TextFillColorDisabled">#FF5A5A5A</Color>
+    <SolidColorBrush x:Key="ApplicationBackgroundBrush" Color="#FF0B0B0B" />
+    <SolidColorBrush x:Key="TextFillColorPrimaryBrush" Color="#FFFFFFFF" />
+    <SolidColorBrush x:Key="TextFillColorSecondaryBrush" Color="#FFB5B5B5" />
+    <SolidColorBrush x:Key="TextFillColorTertiaryBrush" Color="#FF8A8A8A" />
 </ResourceDictionary>

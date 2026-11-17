@@ -14,7 +14,7 @@
              Width="800"
              Height="440"
              ExtendsContentIntoTitleBar="True"
-             WindowBackdropType="Mica"
+             WindowBackdropType="Disable"
              WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>

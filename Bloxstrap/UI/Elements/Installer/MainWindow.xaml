@@ -15,7 +15,7 @@
         Height="540" Width="840" MinWidth="840"
         Background="{ui:ThemeResource ApplicationBackgroundBrush}"
         ExtendsContentIntoTitleBar="True"
-        WindowBackdropType="Mica"
+        WindowBackdropType="Disable"
         WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
