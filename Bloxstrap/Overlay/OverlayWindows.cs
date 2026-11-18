@@ -79,7 +79,7 @@ namespace Bloxstrap.Overlay
                 _panel.Children.Add(new TextBlock
                 {
                     Text = line.Text,
-                    FontFamily = new FontFamily("Consolas"),
+                    FontFamily = new System.Windows.Media.FontFamily("Consolas"),
                     FontSize = 14,
                     FontWeight = FontWeights.SemiBold,
                     Foreground = line.Severity switch
