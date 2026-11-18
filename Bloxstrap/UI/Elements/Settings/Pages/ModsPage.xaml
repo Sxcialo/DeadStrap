@@ -52,20 +52,8 @@
 
         <controls:OptionControl 
             Header="{x:Static resources:Strings.Menu_Mods_Presets_MouseCursor_Title}" 
-            Description="{x:Static resources:Strings.Menu_Mods_Presets_MouseCursor_Description}">
+            Description="Choose a classic Roblox cursor or one of DeadStrap's dot crosshairs.">
             <ComboBox Margin="5,0,0,0" Padding="10,5,10,5" Width="200" ItemsSource="{Binding CursorTypeTask.Selections, Mode=OneTime}" Text="{Binding CursorTypeTask.NewState, Mode=TwoWay}">
-                <ComboBox.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock Text="{Binding Path=., Converter={StaticResource EnumNameConverter}}" />
-                    </DataTemplate>
-                </ComboBox.ItemTemplate>
-            </ComboBox>
-        </controls:OptionControl>
-
-        <controls:OptionControl 
-            Header="Crosshair" 
-            Description="Replaces the shift lock and first person crosshair image with one of DeadStrap's presets.">
-            <ComboBox Margin="5,0,0,0" Padding="10,5,10,5" Width="200" ItemsSource="{Binding CrosshairTypeTask.Selections, Mode=OneTime}" Text="{Binding CrosshairTypeTask.NewState, Mode=TwoWay}">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Path=., Converter={StaticResource EnumNameConverter}}" />

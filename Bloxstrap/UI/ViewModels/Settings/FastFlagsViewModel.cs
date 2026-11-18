@@ -21,6 +21,21 @@ namespace Bloxstrap.UI.ViewModels.Settings
 
         public Visibility CanShowFastFlagEditor => Visibility.Visible;
 
+        public IReadOnlyList<FlagPresetBundle> FlagBundles => FlagPresetBundles.All;
+
+        public ICommand ApplyFlagBundleCommand => new RelayCommand<FlagPresetBundle>(ApplyFlagBundle);
+
+        private void ApplyFlagBundle(FlagPresetBundle? bundle)
+        {
+            if (bundle is null || !bundle.HasFlags)
+                return;
+
+            foreach (var pair in bundle.Flags)
+                App.FastFlags.SetValue(pair.Key, pair.Value);
+
+            RequestPageReloadEvent?.Invoke(this, EventArgs.Empty);
+        }
+
         public bool UseFastFlagManager
         {
             get => App.Settings.Prop.UseFastFlagManager;

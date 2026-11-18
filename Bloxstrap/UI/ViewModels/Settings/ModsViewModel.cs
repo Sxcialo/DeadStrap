@@ -167,21 +167,19 @@ namespace Bloxstrap.UI.ViewModels.Settings
                     { @"content\textures\Cursors\KeyboardMouse\ArrowCursor.png",    "Cursor.From2013.ArrowCursor.png"    },
                     { @"content\textures\Cursors\KeyboardMouse\ArrowFarCursor.png", "Cursor.From2013.ArrowFarCursor.png" }
                 }
-            }
-        });
-
-        public EnumModPresetTask<Enums.CrosshairType> CrosshairTypeTask { get; } = new("CrosshairType", new()
-        {
+            },
             {
-                Enums.CrosshairType.RedGlowDot, new()
+                Enums.CursorType.RedGlowDot, new()
                 {
-                    { CrosshairConfig.LockedCursorPath, CrosshairConfig.RedGlowDotResource }
+                    { @"content\textures\Cursors\KeyboardMouse\ArrowCursor.png",    CrosshairConfig.RedGlowDotResource },
+                    { @"content\textures\Cursors\KeyboardMouse\ArrowFarCursor.png", CrosshairConfig.RedGlowDotResource }
                 }
             },
             {
-                Enums.CrosshairType.BlackDot, new()
+                Enums.CursorType.BlackDot, new()
                 {
-                    { CrosshairConfig.LockedCursorPath, CrosshairConfig.BlackDotResource }
+                    { @"content\textures\Cursors\KeyboardMouse\ArrowCursor.png",    CrosshairConfig.BlackDotResource },
+                    { @"content\textures\Cursors\KeyboardMouse\ArrowFarCursor.png", CrosshairConfig.BlackDotResource }
                 }
             }
         });

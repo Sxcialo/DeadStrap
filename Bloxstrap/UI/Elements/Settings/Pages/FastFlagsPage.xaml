@@ -21,6 +21,19 @@
             <ui:ToggleSwitch IsChecked="{Binding UseFastFlagManager, Mode=TwoWay}" />
         </controls:OptionControl>
 
+        <TextBlock Text="Quick presets" FontSize="20" FontWeight="Medium" Margin="0,16,0,0" />
+        <TextBlock Text="Each one sets a few of the flags below in one click. Press Save afterwards. Applying a preset overwrites the same flags it uses." FontSize="14" TextWrapping="Wrap" Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
+
+        <ItemsControl ItemsSource="{Binding FlagBundles, Mode=OneTime}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <controls:OptionControl Header="{Binding Name}" Description="{Binding Description}">
+                        <ui:Button Content="Apply" IsEnabled="{Binding HasFlags}" Command="{Binding DataContext.ApplyFlagBundleCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}" CommandParameter="{Binding}" />
+                    </controls:OptionControl>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
         <TextBlock Text="{x:Static resources:Strings.Common_Presets}" FontSize="20" FontWeight="Medium" Margin="0,16,0,0" />
 
         <TextBlock Text="{x:Static resources:Strings.Menu_FastFlags_Presets_Categories_Rendering}" FontSize="16" FontWeight="Medium" Margin="0,16,0,0" />
