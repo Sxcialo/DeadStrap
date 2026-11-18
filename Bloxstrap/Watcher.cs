@@ -1,6 +1,7 @@
 ﻿using Bloxstrap.AppData;
 using Bloxstrap.Integrations;
 using Bloxstrap.Models;
+using Bloxstrap.Overlay;
 
 namespace Bloxstrap
 {
@@ -15,6 +16,8 @@ namespace Bloxstrap
         public readonly ActivityWatcher? ActivityWatcher;
 
         public readonly DiscordRichPresence? RichPresence;
+
+        private OverlayManager? _overlays;
 
         public Watcher()
         {
@@ -66,6 +69,17 @@ namespace Bloxstrap
 
                 if (App.Settings.Prop.UseDiscordRichPresence)
                     RichPresence = new(ActivityWatcher);
+            }
+
+            try
+            {
+                _overlays = new OverlayManager(_watcherData.ProcessId, ActivityWatcher);
+                _overlays.Start();
+            }
+            catch (Exception ex)
+            {
+                App.Logger.WriteLine(LOG_IDENT, "Failed to start overlays");
+                App.Logger.WriteException(LOG_IDENT, ex);
             }
 
             _notifyIcon = new(this);
@@ -125,6 +139,7 @@ namespace Bloxstrap
         {
             App.Logger.WriteLine("Watcher::Dispose", "Disposing Watcher");
 
+            _overlays?.Dispose();
             _notifyIcon?.Dispose();
             RichPresence?.Dispose();
 

@@ -63,6 +63,18 @@
         </controls:OptionControl>
 
         <controls:OptionControl 
+            Header="Crosshair" 
+            Description="Replaces the shift lock and first person crosshair image with one of DeadStrap's presets.">
+            <ComboBox Margin="5,0,0,0" Padding="10,5,10,5" Width="200" ItemsSource="{Binding CrosshairTypeTask.Selections, Mode=OneTime}" Text="{Binding CrosshairTypeTask.NewState, Mode=TwoWay}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Path=., Converter={StaticResource EnumNameConverter}}" />
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </controls:OptionControl>
+
+        <controls:OptionControl 
             Header="{x:Static resources:Strings.Menu_Mods_Presets_OldAvatarEditor_Title}" 
             Description="{x:Static resources:Strings.Menu_Mods_Presets_OldAvatarEditor_Description}">
             <ui:ToggleSwitch IsChecked="{Binding OldAvatarBackgroundTask.NewState, Mode=TwoWay}" />
@@ -87,6 +99,12 @@
         </controls:OptionControl>
 
         <TextBlock Text="{x:Static resources:Strings.Common_Miscellaneous}" FontSize="20" FontWeight="Medium" Margin="0,16,0,0" />
+
+        <controls:OptionControl 
+            Header="Font preset" 
+            Description="Pick a built-in font. Use the custom font option below for your own file.">
+            <ComboBox Margin="5,0,0,0" Padding="10,5,10,5" Width="220" ItemsSource="{Binding FontPresetNames, Mode=OneTime}" SelectedItem="{Binding SelectedFontPreset, Mode=TwoWay}" />
+        </controls:OptionControl>
 
         <controls:OptionControl 
             Header="{x:Static resources:Strings.Menu_Mods_Misc_CustomFont_Title}">

@@ -33,5 +33,21 @@ namespace Bloxstrap.Models.Persistable
 
         // mod preset configuration
         public bool UseDisableAppPatch { get; set; } = false;
+
+        // overlay configuration
+        public bool OverlayEnabled { get; set; } = false;
+        public bool OverlayShowFps { get; set; } = true;
+        public bool OverlayShowFrameTime { get; set; } = true;
+        public bool OverlayShowPing { get; set; } = true;
+        public bool OverlayShowCpu { get; set; } = false;
+        public bool OverlayShowRam { get; set; } = false;
+        public bool OverlayShowClock { get; set; } = false;
+        public bool OverlayShowSessionTime { get; set; } = false;
+        public OverlayCorner OverlayCorner { get; set; } = OverlayCorner.TopLeft;
+        public double OverlayOpacity { get; set; } = 0.85;
+        public double OverlayScale { get; set; } = 1.0;
+        public bool CrosshairOverlayEnabled { get; set; } = false;
+        public OverlayCrosshair CrosshairOverlayType { get; set; } = OverlayCrosshair.RedGlowDot;
+        public double CrosshairOverlayScale { get; set; } = 1.0;
     }
 }

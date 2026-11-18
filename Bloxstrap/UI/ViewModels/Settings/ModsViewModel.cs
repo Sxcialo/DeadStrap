@@ -25,6 +25,73 @@ namespace Bloxstrap.UI.ViewModels.Settings
             { "ttc", new byte[4] { 0x74, 0x74, 0x63, 0x66 } } 
         };
 
+        private string? _selectedFontPreset;
+
+        public ModsViewModel()
+        {
+            _selectedFontPreset = DetectFontPreset();
+        }
+
+        public IReadOnlyList<string> FontPresetNames => FontPresets.Names;
+
+        public string? SelectedFontPreset
+        {
+            get => _selectedFontPreset;
+            set
+            {
+                if (value is null || value == _selectedFontPreset)
+                    return;
+
+                if (value == FontPresets.NoneName)
+                {
+                    TextFontTask.NewState = "";
+                }
+                else
+                {
+                    var preset = FontPresets.Find(value);
+
+                    if (preset is null)
+                        return;
+
+                    string? path = FontPresets.Extract(preset);
+
+                    if (path is null)
+                    {
+                        Frontend.ShowMessageBox(Strings.Menu_Mods_Misc_CustomFont_Invalid, MessageBoxImage.Error);
+                        OnPropertyChanged(nameof(SelectedFontPreset));
+                        return;
+                    }
+
+                    TextFontTask.NewState = path;
+                }
+
+                _selectedFontPreset = value;
+                OnPropertyChanged(nameof(SelectedFontPreset));
+                OnPropertyChanged(nameof(ChooseCustomFontVisibility));
+                OnPropertyChanged(nameof(DeleteCustomFontVisibility));
+            }
+        }
+
+        // null when the installed font is a user-chosen file that matches no preset
+        private string? DetectFontPreset()
+        {
+            if (!File.Exists(Paths.CustomFont))
+                return FontPresets.NoneName;
+
+            string? currentHash = TextFontTask.GetFileHash();
+
+            if (currentHash is null)
+                return null;
+
+            foreach (var preset in FontPresets.All)
+            {
+                if (FontPresets.GetResourceHash(preset) == currentHash)
+                    return preset.DisplayName;
+            }
+
+            return null;
+        }
+
         private void ManageCustomFont()
         {
             if (!String.IsNullOrEmpty(TextFontTask.NewState))
@@ -53,6 +120,9 @@ namespace Bloxstrap.UI.ViewModels.Settings
                 TextFontTask.NewState = dialog.FileName;
             }
 
+            _selectedFontPreset = String.IsNullOrEmpty(TextFontTask.NewState) ? FontPresets.NoneName : null;
+
+            OnPropertyChanged(nameof(SelectedFontPreset));
             OnPropertyChanged(nameof(ChooseCustomFontVisibility));
             OnPropertyChanged(nameof(DeleteCustomFontVisibility));
         }
@@ -96,6 +166,22 @@ namespace Bloxstrap.UI.ViewModels.Settings
                 {
                     { @"content\textures\Cursors\KeyboardMouse\ArrowCursor.png",    "Cursor.From2013.ArrowCursor.png"    },
                     { @"content\textures\Cursors\KeyboardMouse\ArrowFarCursor.png", "Cursor.From2013.ArrowFarCursor.png" }
+                }
+            }
+        });
+
+        public EnumModPresetTask<Enums.CrosshairType> CrosshairTypeTask { get; } = new("CrosshairType", new()
+        {
+            {
+                Enums.CrosshairType.RedGlowDot, new()
+                {
+                    { CrosshairConfig.LockedCursorPath, CrosshairConfig.RedGlowDotResource }
+                }
+            },
+            {
+                Enums.CrosshairType.BlackDot, new()
+                {
+                    { CrosshairConfig.LockedCursorPath, CrosshairConfig.BlackDotResource }
                 }
             }
         });
